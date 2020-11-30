@@ -12,5 +12,18 @@
 </body>
 
 </html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
+    let apiKey = "4b3ab151953606b8d08a5cc72390c594";
+    let cityName = "Dallas,Texas"
+
+    let queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function(response) {
+        console.log(response);
+
+    });
 </script>
