@@ -11,21 +11,25 @@
 </head>
 
 <body>
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <div class="container">
+        <!-- Content here -->
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
 
+            </div>
         </div>
+        <!-- set background on 5 day cards to primary, navbar to search for city and 
+            2 cards that shows local storage and the city currently displayed, start adding class and ids to card to then append our information too  -->
     </div>
-    <!-- set background on 5 day cards to primary, navbar to search for city and 2 cards that shows local storage and the city currently displayed  -->
 </body>
 
 </html>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
     let apiKey = "4b3ab151953606b8d08a5cc72390c594";
-    let cityName = "Dallas,Texas"
+    let cityName = "Dallas,Texas";
 
     let queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
 
@@ -34,6 +38,22 @@
         method: "GET"
     }).then(function(response) {
         console.log(response);
+        // this is for converting temperature to farenhiet
+        // bTemp = parseInt((response.main.temp - 273.15) * 1.8 + 32)
+        //     console.log(parseInt((response.main.temp - 273.15) * 1.8 + 32))
+
+    });
+
+
+
+
+    let queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + apiKey;
+    // api.openweathermap.org/data/2.5/forecast?q={city name},{state code}&appid={API key}
+    $.ajax({
+        url: queryURL2,
+        method: "GET"
+    }).then(function(response) {
+        console.log(response.list[2].main.temp);
         // this is for converting temperature to farenhiet
         // bTemp = parseInt((response.main.temp - 273.15) * 1.8 + 32)
         //     console.log(parseInt((response.main.temp - 273.15) * 1.8 + 32))
